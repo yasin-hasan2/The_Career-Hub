@@ -5,8 +5,9 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/root/Root";
 import Home from "./components/home/Home";
-import AppledJobs from "./components/appledJobs/AppledJobs";
 import Error from "./components/error/Error";
+import JobDetails from "./components/jobDetails/JobDetails";
+import AppledJobs from "./components/appledJobs/AppledJobs";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/appled",
         element: <AppledJobs></AppledJobs>,
+        loader: () => fetch("/jobs.json"),
+      },
+      {
+        path: "/job/:id",
+        element: <JobDetails></JobDetails>,
+        loader: () => fetch("/jobs.json"),
       },
     ],
   },

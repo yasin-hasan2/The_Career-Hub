@@ -2,9 +2,11 @@
 import PropTypes from "prop-types";
 import { GrLocation } from "react-icons/gr";
 import { AiOutlineDollar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -44,7 +46,10 @@ const Job = ({ job }) => {
             </h1>
           </div>
           <div className="card-actions ">
-            <button className="btn btn-primary">Buy Now</button>
+            <Link to={`/job/${id}`}>
+              {" "}
+              <button className="btn btn-primary">Buy Now</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -52,7 +57,7 @@ const Job = ({ job }) => {
   );
 };
 Job.propTypes = {
-  job: PropTypes.string,
+  job: PropTypes.object,
 };
 
 export default Job;
